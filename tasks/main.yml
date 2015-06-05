@@ -1,0 +1,21 @@
+- yum: name="@java-development" state=present
+
+- yum: name={{item}} state=present
+  with_items:
+   - curl
+   - tar
+ 
+- shell: >
+    curl -sL "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz&r=1" | 
+    tar xz -C /usr/local/ --no-same-owner --no-same-permissions
+    creates=/usr/local/eclipse
+
+- replace:
+    dest: /etc/sudoers
+    regexp: "(secure_path(?!.*/usr/local/eclipse.*).*)"
+    replace: "\1:/usr/local/eclipse"
+    backup: yes
+
+- copy: src=eclipse.sh dest=/etc/profile.d
+
+- copy: src=eclipse.desktop dest=/usr/local/share/applications
