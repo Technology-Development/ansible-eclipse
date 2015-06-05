@@ -1,3 +1,4 @@
+---
 - yum: name="@java-development" state=present
 
 - yum: name={{item}} state=present

@@ -1,0 +1,4 @@
+---
+galaxy_info:
+  author: Alex Coyle
+  description: Ansible role to install Eclipse, also includes 'eclipse' custom module for installing Eclipse feature groups
