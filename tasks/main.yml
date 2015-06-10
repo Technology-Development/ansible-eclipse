@@ -13,8 +13,8 @@
 
 - replace:
     dest: /etc/sudoers
-    regexp: "(secure_path(?!.*/usr/local/eclipse.*).*)"
-    replace: "\1:/usr/local/eclipse"
+    regexp: (secure_path(?!.*/usr/local/eclipse.*).*)
+    replace: '1:/usr/local/eclipse'
     backup: yes
 
 - copy: src=eclipse.sh dest=/etc/profile.d
