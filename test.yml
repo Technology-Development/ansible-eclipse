@@ -1,4 +1,5 @@
 - hosts: localhost
+  sudo: yes
 
   tasks:
     - include: 'tasks/main.yml'
