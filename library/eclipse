@@ -9,7 +9,7 @@ function fail {
 function install {
   stderr=$(eclipse -nosplash -application org.eclipse.equinox.p2.director\
  -repository http://download.eclipse.org/releases/luna,$repository\
- -installIU $iu 2>&1 >/dev/null)
+ -installIU "$iu" 2>&1 >/dev/null)
   [ $? -ne 0 ] && fail "couldn't install $iu" "$stderr"
 }
 
@@ -22,7 +22,7 @@ function install {
 
 stderr=$(eclipse -nosplash -application org.eclipse.equinox.p2.director\
  -repository http://download.eclipse.org/releases/luna,$repository\
- -uninstallIU $iu\
+ -uninstallIU "$iu"\
  -verifyOnly 2>&1 >/dev/null)
 verify=$?
 
