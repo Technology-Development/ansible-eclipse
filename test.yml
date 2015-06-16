@@ -2,4 +2,4 @@
   sudo: yes
 
   tasks:
-    - include: 'tasks/main.yml'
+    - include: tasks/main.yml
