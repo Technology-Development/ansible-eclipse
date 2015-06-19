@@ -5,18 +5,23 @@
   with_items:
    - curl
    - tar
- 
-- shell: >
-    curl -sL "https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/luna/SR1/eclipse-java-luna-SR1-linux-gtk-x86_64.tar.gz&r=1" | 
-    tar xz -C /usr/local/ --no-same-owner --no-same-permissions
-    creates=/usr/local/eclipse
 
+- get_url:
+    url: "{{ eclipse_url }}"
+    dest: /tmp/eclipse.tar.gz
+
+- file: path={{ eclipse_dir }} state=directory
+
+- command: tar xz -f /tmp/eclipse.tar.gz -C {{ eclipse_dir }} --strip-components=1 --no-same-owner --no-same-permissions
+  args:
+    creates: "{{ eclipse_dir }}/eclipse"
+  
 - replace:
     dest: /etc/sudoers
-    regexp: (secure_path(?!.*/usr/local/eclipse.*).*)
-    replace: '\1:/usr/local/eclipse'
+    regexp: (secure_path(?!.*{{ eclipse_dir }}.*).*)
+    replace: '\1:{{ eclipse_dir }}'
     backup: yes
 
-- copy: src=eclipse.sh dest=/etc/profile.d
+- template: src=eclipse.sh.j2 dest=/etc/profile.d/eclipse.sh
 
-- copy: src=eclipse.desktop dest=/usr/local/share/applications
+- template: src=eclipse.desktop.j2 dest={{ applications_dir }}/eclipse.desktop
