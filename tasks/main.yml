@@ -3,16 +3,15 @@
 
 - yum: name={{item}} state=present
   with_items:
-   - curl
    - tar
 
 - get_url:
     url: "{{ eclipse_url }}"
-    dest: /tmp/eclipse.tar.gz
+    dest: /var/tmp/eclipse.tar.gz
 
 - file: path={{ eclipse_dir }} state=directory
 
-- command: tar xz -f /tmp/eclipse.tar.gz -C {{ eclipse_dir }} --strip-components=1 --no-same-owner --no-same-permissions
+- command: tar xz -f /var/tmp/eclipse.tar.gz -C {{ eclipse_dir }} --strip-components=1 --no-same-owner --no-same-permissions
   args:
     creates: "{{ eclipse_dir }}/eclipse"
   
