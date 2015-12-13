@@ -3,7 +3,8 @@
 
 - yum: name={{item}} state=present
   with_items:
-   - tar
+    - tar
+    - sudo
 
 - get_url:
     url: "{{ eclipse_url }}"
