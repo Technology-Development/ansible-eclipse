@@ -6,16 +6,24 @@
     - tar
     - sudo
 
+- assert:
+    that:
+      - eclipse_url_safe
+    msg: 'Could not determine Eclipse build name from eclipse url, please check eclipse_url var'
+
 - get_url:
-    url: "{{ eclipse_url }}"
-    dest: /var/tmp/eclipse.tar.gz
+    url: '{{ eclipse_url }}'
+    dest: /var/tmp/{{ eclipse_pkg_file_name }}
 
-- file: path={{ eclipse_dir }} state=directory
+- file: path={{ eclipse_pkg_dir }} state=directory
 
-- command: tar xz -f /var/tmp/eclipse.tar.gz -C {{ eclipse_dir }} --strip-components=1 --no-same-owner --no-same-permissions
+- command: tar xz -f /var/tmp/{{ eclipse_pkg_file_name }} 
+    -C {{ eclipse_pkg_dir }} --strip-components=1 --no-same-owner --no-same-permissions
   args:
-    creates: "{{ eclipse_dir }}/eclipse"
-  
+    creates: '{{ eclipse_pkg_dir }}/eclipse'
+
+- alternatives: name=eclipse link={{ eclipse_dir }} path={{ eclipse_pkg_dir }}
+ 
 - replace:
     dest: /etc/sudoers
     regexp: (secure_path(?!.*{{ eclipse_dir }}.*).*)
