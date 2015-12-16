@@ -19,8 +19,8 @@ setup() {
 
 @test "Role can be applied to container" {
   ansible-playbook -i hosts test.yml
-  docker_exec test -f /usr/local/eclipse-platform-4.4.2-linux-gtk-x86_64/eclipse
-  docker_exec alternatives --display eclipse | grep "link currently points to /usr/local/eclipse-platform-4.4.2-linux-gtk-x86_64"
+  docker_exec test -f /usr/local/eclipse-platform-4.5.1-linux-gtk-x86_64/eclipse
+  docker_exec alternatives --display eclipse | grep "link currently points to /usr/local/eclipse-platform-4.5.1-linux-gtk-x86_64"
 }
 
 @test "Override default eclipse url" {
