@@ -1,9 +1,4 @@
 ---
-- yum: name={{item}} state=present
-  with_items:
-    - java-headless
-    - tar
-    - sudo
 
 - assert:
     that:
@@ -13,6 +8,17 @@
 - get_url:
     url: '{{ eclipse_url }}'
     dest: /var/tmp/{{ eclipse_pkg_file_name }}
+  delegate_to: localhost
+
+- copy:
+    src: /var/tmp/{{ eclipse_pkg_file_name }}
+    dest: /var/tmp/
+
+- yum: name={{item}} state=present
+  with_items:
+    - tar
+    - sudo
+    - java-headless
 
 - file: path={{ eclipse_pkg_dir }} state=directory
 
@@ -22,7 +28,7 @@
     creates: '{{ eclipse_pkg_dir }}/eclipse'
 
 - alternatives: name=eclipse link={{ eclipse_dir }} path={{ eclipse_pkg_dir }}
- 
+
 - replace:
     dest: /etc/sudoers
     regexp: (secure_path(?!.*{{ eclipse_dir }}.*).*)
