@@ -5,14 +5,20 @@
       - eclipse_url_safe
     msg: 'Could not determine Eclipse build name from eclipse url, please check eclipse_url var'
 
+- file: path=/var/tmp/ansible-eclipse state=directory
+  changed_when: false
+  delegate_to: localhost
+
 - get_url:
     url: '{{ eclipse_url }}'
-    dest: /var/tmp/{{ eclipse_pkg_file_name }}
+    dest: /var/tmp/ansible-eclipse/{{ eclipse_pkg_file_name }}
+  changed_when: false
   delegate_to: localhost
 
 - copy:
-    src: /var/tmp/{{ eclipse_pkg_file_name }}
-    dest: /var/tmp/
+    src: /var/tmp/ansible-eclipse/{{ eclipse_pkg_file_name }}
+    dest: /tmp/
+  changed_when: false
 
 - yum: name={{item}} state=present
   with_items:
@@ -22,7 +28,7 @@
 
 - file: path={{ eclipse_pkg_dir }} state=directory
 
-- command: tar xz -f /var/tmp/{{ eclipse_pkg_file_name }} 
+- command: tar xz -f /tmp/{{ eclipse_pkg_file_name }} 
     -C {{ eclipse_pkg_dir }} --strip-components=1 --no-same-owner --no-same-permissions
   args:
     creates: '{{ eclipse_pkg_dir }}/eclipse'
