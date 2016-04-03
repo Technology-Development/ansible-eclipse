@@ -1,5 +1,14 @@
 ---
 galaxy_info:
   author: Alex Coyle
-  description: Ansible role to install Eclipse
-dependencies: []
+  description: A role for installing Eclipse
+  license: BSD
+  min_ansible_version: 1.9
+  platforms:
+  - name: GenericLinux
+    versions:
+    - any
+  categories:
+  - development
+dependencies:
+  - []
