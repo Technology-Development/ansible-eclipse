@@ -4,7 +4,7 @@
 
 # https://github.com/tutumcloud/tutum-fedora
 readonly docker_image="tutum/fedora:21"
-readonly docker_container_name="fedora-ansible-eclipse"
+readonly docker_container_name="ansible-eclipse"
 
 docker_exec() {
   docker exec $docker_container_name $@
