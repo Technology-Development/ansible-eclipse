@@ -3,7 +3,7 @@ galaxy_info:
   author: Alex Coyle
   description: A role for installing Eclipse
   license: BSD
-  min_ansible_version: 1.9
+  min_ansible_version: 2.0
   platforms:
   - name: GenericLinux
     versions:
