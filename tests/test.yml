@@ -1,8 +1,7 @@
+---
+
 - hosts: container
   remote_user: root
 
-  vars_files:
-    - ../defaults/main.yml
-
-  tasks:
-    - include: ../tasks/main.yml
+  roles:
+    - ansible-eclipse
