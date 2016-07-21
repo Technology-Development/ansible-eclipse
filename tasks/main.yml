@@ -8,19 +8,21 @@
 - file: path=/var/tmp/ansible-eclipse state=directory
   changed_when: false
   delegate_to: localhost
+  become: no
 
 - get_url:
     url: '{{ eclipse_url }}'
     dest: /var/tmp/ansible-eclipse/{{ eclipse_pkg_file_name }}
   changed_when: false
   delegate_to: localhost
+  become: no
 
 - copy:
     src: /var/tmp/ansible-eclipse/{{ eclipse_pkg_file_name }}
     dest: /tmp/
   changed_when: false
 
-- yum: name={{item}} state=present
+- package: name={{item}} state=present
   with_items:
     - tar
     - sudo

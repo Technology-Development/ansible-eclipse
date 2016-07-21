@@ -1,7 +1,8 @@
 ---
 
 - hosts: container
-  remote_user: root
+  remote_user: test
+  become: yes
 
   roles:
     - ansible-eclipse
