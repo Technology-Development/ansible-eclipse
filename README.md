@@ -1,6 +1,8 @@
 ansible-eclipse
 ===============
 
+[![Build Status](https://travis-ci.org/alzadude/ansible-eclipse.svg?branch=master)](https://travis-ci.org/alzadude/ansible-eclipse)
+
 A role for installing Eclipse, including sudo configuration, `PATH` environment and desktop launcher.
 
 Notes:
@@ -64,5 +66,5 @@ ansible-playbook -i hosts playbook.yml
 License
 -------
 
-BSD
+MIT
 
