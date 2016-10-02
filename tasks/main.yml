@@ -43,6 +43,6 @@
     replace: '\1:{{ eclipse_dir }}'
     backup: yes
 
-- template: src=eclipse.sh.j2 dest=/etc/profile.d/eclipse.sh
+- template: src=ansible-eclipse.sh.j2 dest=/etc/profile.d/ansible-eclipse.sh
 
-- template: src=eclipse.desktop.j2 dest={{ applications_dir }}/eclipse.desktop
+- template: src=ansible-eclipse.desktop.j2 dest={{ applications_dir }}/ansible-eclipse.desktop

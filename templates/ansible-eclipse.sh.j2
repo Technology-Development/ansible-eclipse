@@ -1,0 +1,5 @@
+{# http://unix.stackexchange.com/questions/124444/how-can-i-cleanly-add-to-path #}
+case ":${PATH:={{ eclipse_dir }}}:" in
+    *:{{ eclipse_dir }}:*) ;;
+    *) PATH="${PATH}:{{ eclipse_dir }}" ;;
+esac

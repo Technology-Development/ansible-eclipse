@@ -1,5 +1,0 @@
-case ":${PATH:-}:" in
-    *:{{ eclipse_dir }}:*) ;;
-    *) PATH="{{ eclipse_dir }}${PATH:+:$PATH}" ;;
-esac
-
