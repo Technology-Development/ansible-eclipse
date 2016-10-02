@@ -18,7 +18,7 @@ Currently the role has only been tested against Fedora (23) hosts, but in theory
 Role Variables
 --------------
 
-- `eclipse_url` - Download link for the Eclipse package. Defaults to the link for the Eclipse Platform Binary package, `http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.5.1-201509040015/eclipse-platform-4.5.1-linux-gtk-x86_64.tar.gz&r=1`
+- `eclipse_url` - Download link for the Eclipse package. Defaults to the link for the Eclipse Platform Binary package, `http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops4/R-4.5.2-201602121500/eclipse-platform-4.5.2-linux-gtk-x86_64.tar.gz&r=1`
 
 Dependencies
 ------------
